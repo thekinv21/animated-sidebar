@@ -9,8 +9,11 @@ interface IMainLayout {
 export function MainLayout({ children }: IMainLayout) {
 	return (
 		<section className='flex h-screen w-screen'>
-			<Sidebar />
-			<main>
+			<>
+				<Sidebar />
+			</>
+
+			<main className='flex-1'>
 				<Header />
 				{children}
 				<Footer />
