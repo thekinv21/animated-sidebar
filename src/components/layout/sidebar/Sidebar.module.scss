@@ -17,6 +17,10 @@
 	}
 }
 
+.collapsed_logo {
+	@apply mb-2 flex select-none items-center justify-center gap-2 border-b border-gray-100/70 p-4;
+}
+
 .links {
 	@apply flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700;
 }

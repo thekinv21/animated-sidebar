@@ -1,9 +1,11 @@
 import {
 	FlowerIcon,
 	LayoutDashboardIcon,
-	ShieldCheckIcon,
-	UserRoundCheckIcon,
-	UserRoundCogIcon
+	LockIcon,
+	PhoneIncomingIcon,
+	SettingsIcon,
+	ShoppingCartIcon,
+	UserRoundCheckIcon
 } from 'lucide-react'
 
 export interface ISidebarLink {
@@ -18,7 +20,7 @@ export interface ISidebarLink {
 export interface ISidebarSubLink {
 	label: string
 	url: string
-	icon: JSX.Element
+	icon?: JSX.Element
 	hasAuthority?: string[]
 }
 
@@ -27,40 +29,33 @@ export const sidebarLinks: ISidebarLink[] = [
 		label: 'dashboard',
 		url: '/',
 		icon: <LayoutDashboardIcon size={18} strokeWidth={2} />,
-		hasAuthority: ['admin', 'user']
+		hasAuthority: ['ADMIN', 'USER']
 	},
 	{
 		label: 'products',
 		heading: 'product',
 		url: '/product/:name',
-		icon: <ShieldCheckIcon size={18} strokeWidth={2} />,
+		icon: <ShoppingCartIcon size={18} strokeWidth={2} />
+	},
+	{
+		label: 'flowers',
+		heading: 'Managements',
+		url: '/flowers',
+		icon: <FlowerIcon size={18} strokeWidth={2} />,
+		hasAuthority: ['USER'],
 		subLinks: [
 			{
 				label: 'Flower Management',
 				url: '/product/flower',
-				icon: <UserRoundCheckIcon size={16} strokeWidth={2} />,
-				hasAuthority: ['admin']
-			},
-			{
-				label: 'Role Management',
-				url: '/product/role',
-				icon: <UserRoundCogIcon size={16} strokeWidth={2} />,
-				hasAuthority: ['admin']
+				hasAuthority: ['ADMIN']
 			}
 		]
-	},
-	{
-		label: 'flowers',
-		heading: 'products',
-		url: '/flowers',
-		icon: <FlowerIcon size={18} strokeWidth={2} />,
-		hasAuthority: ['user']
 	},
 	{
 		label: 'settings',
 		heading: 'preferences',
 		url: '/settings',
-		icon: <UserRoundCogIcon size={18} strokeWidth={2} />,
+		icon: <SettingsIcon size={18} strokeWidth={2} />,
 		subLinks: [
 			{
 				label: 'Profile',
@@ -70,14 +65,14 @@ export const sidebarLinks: ISidebarLink[] = [
 			{
 				label: 'Security',
 				url: '/settings/security',
-				icon: <UserRoundCogIcon size={16} strokeWidth={2} />
+				icon: <LockIcon size={16} strokeWidth={2} />
 			}
 		]
 	},
 	{
 		label: 'support',
 		url: '/support',
-		icon: <ShieldCheckIcon size={18} strokeWidth={2} />,
-		hasAuthority: ['user', 'admin']
+		icon: <PhoneIncomingIcon size={18} strokeWidth={2} />,
+		hasAuthority: ['USER', 'ADMIN']
 	}
 ]

@@ -7,18 +7,22 @@ interface ISidebarLogo {
 
 export function SidebarLogo({ sidebar }: ISidebarLogo) {
 	return (
-		<a href='/dashboard' className={styles.logo}>
-			{sidebar === SidebarStatus.NORMAL ? (
-				<img draggable={false} src='/vite.svg' className='h-10 w-10' />
-			) : null}
-			{sidebar === SidebarStatus.NORMAL ? (
-				<h5>Logo</h5>
-			) : (
+		<a
+			href='/dashboard'
+			className={
+				sidebar === SidebarStatus.NORMAL ? styles.logo : styles.collapsed_logo
+			}
+		>
+			{sidebar === SidebarStatus.NORMAL && (
 				<>
-					{sidebar === SidebarStatus.MOBILE ? null : (
-						<h5 className='w-full text-center'>L</h5>
-					)}
+					<img draggable={false} src='/vite.svg' className='h-8 w-8' />
+					<h5 className='uppercase'>Logo</h5>
 				</>
+			)}
+			{sidebar !== SidebarStatus.NORMAL && sidebar !== SidebarStatus.MOBILE && (
+				<div className='flex items-center justify-center'>
+					<img draggable={false} src='/vite.svg' className='h-8 w-8' />
+				</div>
 			)}
 		</a>
 	)
