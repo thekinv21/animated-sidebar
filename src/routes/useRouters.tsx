@@ -1,11 +1,11 @@
-import { HomePage } from '@/screens'
+import { HomePage, NotFoundPage } from '@/screens'
 import { IRoute } from '@/types'
 
 export const useRouters = () => {
 	const routes: IRoute[] = [
 		{
 			path: '*',
-			element: <div>Not Found Page</div>,
+			element: <NotFoundPage />,
 			layout: 'blank'
 		},
 
