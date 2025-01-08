@@ -1,14 +1,25 @@
-export function SidebarLogo() {
+import { SidebarStatus } from '@/types/custom.enum'
+import styles from './Sidebar.module.scss'
+
+interface ISidebarLogo {
+	sidebar: string
+}
+
+export function SidebarLogo({ sidebar }: ISidebarLogo) {
 	return (
-		<aside className='px-4 py-4'>
-			<div className='flex items-center'>
-				<div className='flex flex-1 items-center gap-x-3'>
-					<img src='/react.svg' className='h-8 w-8 text-[#e11d48]' />
-					<div className='flex-1 text-xl text-[#e11d48] font-semibold'>
-						React Sidebar
-					</div>
-				</div>
-			</div>
-		</aside>
+		<a href='/dashboard' className={styles.logo}>
+			{sidebar === SidebarStatus.NORMAL ? (
+				<img draggable={false} src='/logo.svg' className='h-10 w-10' />
+			) : null}
+			{sidebar === SidebarStatus.NORMAL ? (
+				<h5>Bloomify</h5>
+			) : (
+				<>
+					{sidebar === SidebarStatus.MOBILE ? null : (
+						<h5 className='w-full text-center'>B</h5>
+					)}
+				</>
+			)}
+		</a>
 	)
 }

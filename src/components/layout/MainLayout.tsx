@@ -1,6 +1,7 @@
-import { Footer } from './footer'
-import { Header } from './header'
-import { Sidebar } from './sidebar'
+import { domAnimation, LazyMotion } from 'motion/react'
+
+import styles from './MainLayout.module.scss'
+import { Sidebar } from './sidebar/Sidebar'
 
 interface IMainLayout {
 	children: React.ReactNode
@@ -8,16 +9,20 @@ interface IMainLayout {
 
 export function MainLayout({ children }: IMainLayout) {
 	return (
-		<section className='flex h-screen w-screen'>
-			<>
-				<Sidebar />
-			</>
+		<LazyMotion features={domAnimation}>
+			<section className='relative'>
+				<div className={styles.main_layout}>
+					<>
+						<Sidebar />
+					</>
 
-			<main className='flex-1'>
-				<Header />
-				{children}
-				<Footer />
-			</main>
-		</section>
+					<div className={styles.container}>
+						<main id='screen_content' className={styles.content}>
+							{children}
+						</main>
+					</div>
+				</div>
+			</section>
+		</LazyMotion>
 	)
 }

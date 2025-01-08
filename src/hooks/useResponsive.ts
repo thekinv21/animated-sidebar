@@ -1,62 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useMediaQuery } from './useMediaQuery'
 
-const twBreakpoint: Record<'2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs', string> = {
-	'2xl': '1536',
-	xl: '1280',
-	lg: '1024',
-	md: '768',
-	sm: '640',
-	xs: '576'
-}
+export const useResponsive = () => {
+	const isMobile = useMediaQuery('(max-width: 640px)')
+	const isTablet = useMediaQuery('(max-width: 768px)')
+	const isDesktop = useMediaQuery('(max-width: 1024px)')
+	const isLargeDesktop = useMediaQuery('(max-width: 1280px)')
+	const isExtraLargeDesktop = useMediaQuery('(max-width: 1536px)')
+	const isPortrait = useMediaQuery('(orientation: portrait)')
 
-const breakpointInt = (str = '') => {
-	return parseInt(str.replace('px', ''))
-}
-
-const breakpoint = {
-	'2xl': breakpointInt(twBreakpoint['2xl']), // 1536
-	xl: breakpointInt(twBreakpoint.xl), // 1280
-	lg: breakpointInt(twBreakpoint.lg), // 1024
-	md: breakpointInt(twBreakpoint.md), // 768
-	sm: breakpointInt(twBreakpoint.sm), // 640
-	xs: breakpointInt(twBreakpoint.xs) // 576
-}
-
-const useResponsive = () => {
-	const getAllSizes = (comparator = 'smaller') => {
-		const currentWindowWidth = window.innerWidth
-		return Object.fromEntries(
-			Object.entries(breakpoint).map(([key, value]) => [
-				key,
-				comparator === 'larger'
-					? currentWindowWidth > value
-					: currentWindowWidth < value
-			])
-		)
+	return {
+		isMobile,
+		isTablet,
+		isDesktop,
+		isLargeDesktop,
+		isExtraLargeDesktop,
+		isPortrait
 	}
-
-	const getResponsiveState = () => {
-		const currentWindowWidth = window.innerWidth
-		return {
-			windowWidth: currentWindowWidth,
-			larger: getAllSizes('larger'),
-			smaller: getAllSizes('smaller')
-		}
-	}
-
-	const [responsive, setResponsive] = useState(getResponsiveState())
-
-	const resizeHandler = () => {
-		const responsiveState = getResponsiveState()
-		setResponsive(responsiveState)
-	}
-
-	useEffect(() => {
-		window.addEventListener('resize', resizeHandler)
-		return () => window.removeEventListener('resize', resizeHandler)
-	}, [responsive.windowWidth])
-
-	return responsive
 }
-
-export default useResponsive
