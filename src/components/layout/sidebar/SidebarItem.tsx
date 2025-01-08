@@ -3,7 +3,7 @@ import { useState } from 'react'
 import AnimateHeight from 'react-animate-height'
 import { NavLink, useLocation } from 'react-router'
 
-import { useCookie, useTranslate } from '@/hooks'
+import { useTranslate } from '@/hooks'
 
 import { RoleEnum } from '@/types/custom.enum'
 
@@ -44,7 +44,7 @@ export function SidebarItemDropdown(dropdownLink: ISidebarItemDropdown) {
 	const { t } = useTranslate()
 	const location = useLocation()
 
-	const { USER_ROLES } = useCookie()
+	const USER_ROLES = ['ADMIN', 'SUPER_ADMIN']
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 

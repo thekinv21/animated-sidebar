@@ -11,9 +11,9 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui'
 
+import { cn } from '@/lib/utils'
 import styles from './Sidebar.module.scss'
 import { ISidebarLink } from './SidebarLinksData'
-import { cn } from '@/utils/utils'
 
 interface ISidebarCollapsedItem {
 	item: ISidebarLink

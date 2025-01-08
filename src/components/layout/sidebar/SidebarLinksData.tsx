@@ -27,32 +27,57 @@ export const sidebarLinks: ISidebarLink[] = [
 		label: 'dashboard',
 		url: '/',
 		icon: <LayoutDashboardIcon size={18} strokeWidth={2} />,
-		hasAuthority: []
+		hasAuthority: ['admin', 'user']
 	},
 	{
-		label: 'admin',
-		heading: 'admin',
-		url: '/admin/:name',
+		label: 'products',
+		heading: 'product',
+		url: '/product/:name',
 		icon: <ShieldCheckIcon size={18} strokeWidth={2} />,
 		subLinks: [
 			{
-				label: 'user',
-				url: '/user',
+				label: 'Flower Management',
+				url: '/product/flower',
+				icon: <UserRoundCheckIcon size={16} strokeWidth={2} />,
+				hasAuthority: ['admin']
+			},
+			{
+				label: 'Role Management',
+				url: '/product/role',
+				icon: <UserRoundCogIcon size={16} strokeWidth={2} />,
+				hasAuthority: ['admin']
+			}
+		]
+	},
+	{
+		label: 'flowers',
+		heading: 'products',
+		url: '/flowers',
+		icon: <FlowerIcon size={18} strokeWidth={2} />,
+		hasAuthority: ['user']
+	},
+	{
+		label: 'settings',
+		heading: 'preferences',
+		url: '/settings',
+		icon: <UserRoundCogIcon size={18} strokeWidth={2} />,
+		subLinks: [
+			{
+				label: 'Profile',
+				url: '/settings/profile',
 				icon: <UserRoundCheckIcon size={16} strokeWidth={2} />
 			},
 			{
-				label: 'role',
-				url: '/role',
+				label: 'Security',
+				url: '/settings/security',
 				icon: <UserRoundCogIcon size={16} strokeWidth={2} />
 			}
 		]
 	},
-
 	{
-		label: 'flowers',
-		url: '/flowers',
-		heading: 'products',
-		icon: <FlowerIcon size={18} strokeWidth={2} />,
-		hasAuthority: []
+		label: 'support',
+		url: '/support',
+		icon: <ShieldCheckIcon size={18} strokeWidth={2} />,
+		hasAuthority: ['user', 'admin']
 	}
 ]

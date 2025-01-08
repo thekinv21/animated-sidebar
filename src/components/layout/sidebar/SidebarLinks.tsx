@@ -1,4 +1,4 @@
-import { useCookie, useTranslate } from '@/hooks'
+import { useTranslate } from '@/hooks'
 
 import { RoleEnum, SidebarStatus } from '@/types/custom.enum'
 
@@ -14,7 +14,7 @@ export function SidebarLinks() {
 	const { sidebar } = useAppStore()
 	const { t } = useTranslate()
 
-	const { USER_ROLES } = useCookie()
+	const USER_ROLES = ['ADMIN', 'SUPER_ADMIN']
 
 	const isAlwaysVisible =
 		USER_ROLES?.includes(RoleEnum.ADMIN) ||
