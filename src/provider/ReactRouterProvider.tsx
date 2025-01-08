@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 
 import { IRoute } from '@/types'
 
-import { MainLayout } from '@/components'
+import { MainLayout } from '@/components/layout/main-layout'
 import { useRouters } from '@/routes/useRouters'
 
 export default function ReactRouterProvider() {

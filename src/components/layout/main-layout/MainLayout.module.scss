@@ -1,0 +1,11 @@
+.main_layout {
+	@apply flex min-h-screen text-black transition-all duration-300;
+}
+
+.container {
+	@apply flex max-h-screen min-h-screen flex-1 flex-col overflow-y-auto;
+}
+
+.content {
+	@apply mt-16 overflow-x-scroll p-4 sm:p-6 lg:mt-1;
+}

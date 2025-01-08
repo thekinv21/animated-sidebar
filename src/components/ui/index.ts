@@ -18,7 +18,12 @@ import {
 	DropdownMenuTrigger
 } from './dropdown-menu'
 
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
 export {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
 	Button,
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
